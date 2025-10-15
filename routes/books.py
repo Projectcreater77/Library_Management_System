@@ -9,12 +9,20 @@ def get_books():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
-    # if category:
-        # Code for database
+    if category:
+        cursor.execute("""
+            SELECT b.id, b.title, b.author, c.name AS category, b.available_copies
+            FROM books b
+            LEFT JOIN categories c ON b.category_id = c.id
+            WHERE c.name = %s
+        """, (category,))
         
-    # else:
-        # Code for database
-
+    else:
+        cursor.execute("""
+            SELECT b.id, b.title, b.author, c.name AS category, b.available_copies
+            FROM books b
+            LEFT JOIN categories c ON b.category_id = c.id
+        """)
     books = cursor.fetchall()
     cursor.close()
     conn.close()
