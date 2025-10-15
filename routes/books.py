@@ -9,14 +9,13 @@ def get_books():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
-    if category:
+    # if category:
         # Code for database
         
-    else:
+    # else:
         # Code for database
 
     books = cursor.fetchall()
     cursor.close()
     conn.close()
     return jsonify(books)
-

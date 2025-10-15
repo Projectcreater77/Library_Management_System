@@ -76,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 };
 
-
-  // Chatbot toggle
   chatbotToggle.addEventListener('click', () => {
     chatbot.classList.toggle('hidden');
   });
@@ -110,7 +108,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     chatInput.value = '';
   }
-
-  // Initial load
   fetchBooks();
 });

@@ -5,18 +5,16 @@ from routes.chatbot import chatbot_bp
 from db import get_db_connection
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"  # Needed for session management
+app.secret_key = "supersecretkey"
 
-# Register blueprints
 app.register_blueprint(books_bp)
 app.register_blueprint(borrow_bp)
 app.register_blueprint(chatbot_bp)
 
 @app.route('/')
 def home():
-    # Check if user is logged in
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # Redirect to login first
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
